@@ -1,2 +1,2 @@
 # Codsoft
-click  :https://srinivasaiml.github.io/Codsoft/updatefort.html
+portfolio to click the link :https://srinivasaiml.github.io/Codsoft/portfolio.html
