@@ -1,0 +1,70 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="cal.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <br><br>
+        
+        <input id ="btn"type="button" value="C" onclick="clearAll()">
+        <input id ="btn" type="button" value="R" onclick="clearLast()">
+        <input id ="btn" type="button" value="%" onclick="addToDisplay('%')">
+        <input id ="btn" type="button" value="/" onclick="addToDisplay('/')">
+        <br>
+        <input id ="btn" type="button" value="7" onclick="addToDisplay('7')">
+        <input id ="btn" type="button" value="8" onclick="addToDisplay('8')">
+        <input id ="btn" type="button" value="9" onclick="addToDisplay('9')">
+        <input id ="btn" type="button" value="*" onclick="addToDisplay('*')">
+       
+        <br>
+        <input id ="btn" type="button" value="4" onclick="addToDisplay('4')">
+        <input id ="btn" type="button" value="5" onclick="addToDisplay('5')">
+        <input id ="btn" type="button" value="6" onclick="addToDisplay('6')">
+        <input id ="btn" type="button" value="-" onclick="addToDisplay('-')">
+        <br>
+        <input id ="btn" type="button" value="1" onclick="addToDisplay('1')">
+        <input id ="btn" type="button" value="2" onclick="addToDisplay('2')">
+        <input id ="btn" type="button" value="3" onclick="addToDisplay('3')">
+        <input id ="btn" type="button" value="+" onclick="addToDisplay('+')">
+        <br>
+    
+        <input id ="btn" type="button" value="." onclick="addToDisplay('.')">
+        <input id ="btn" type="button" value="0" onclick="addToDisplay('0')">
+        <input id ="btn1" type="button" value="=" onclick="calculate()">
+        <br>
+      
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearLast() {
+            var display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function clearAll() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>

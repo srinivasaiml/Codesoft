@@ -1,0 +1,60 @@
+
+body {
+  margin: 100px 10px;
+  font-family: Arial, sans-serif;
+  background: #000;
+}
+.calculator {
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px  rgba(255,255,255,0.45);
+  width: 260px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+#display{
+height: 70px;
+width: 75%;
+border-radius: 20px;
+background: #dde1e7;
+box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 15px 15px 14px rgba(94,104,121,0.3);
+border: 0;
+color: rgb(57, 55, 55);
+font-size: 2.5rem;
+padding: 0 30px;
+}
+#btn1{
+margin: 8px;
+cursor: pointer;
+height: 50px;
+width: 100px;
+border: 0;
+font-size: 1rem;
+border-radius: 50px;
+background: #dde1e7;
+box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+color: rgb(137, 137, 137);
+}
+
+#btn {
+margin: 5px;
+cursor: pointer;
+height: 50px;
+width: 48px;
+border: 0;
+font-size: 1rem;
+border-radius: 50px;
+background: #dde1e7;
+box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+color: rgb(137, 137, 137);
+}
+#btn:active {
+  background: #dde1e7;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+ }
+#btn1:active {
+background: #dde1e7;
+box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
