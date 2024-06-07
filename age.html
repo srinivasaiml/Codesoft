@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+</head>
+<link rel="stylesheet" href="age.css">
+<body>
+   
+   <center>
+    <div class="box">
+        <h3>Age Calculator</h3>
+        <label for="birthdate">Enter your birthdate:</label><br>
+        <input type="date" id="birthdate"> <br><br>
+        <button onclick="calculate()" id="btn">Calculate</button>
+        <p id="age"></p>
+    </div>
+  </center> 
+
+    <script>
+        function calculate() {
+            const birthdate = document.getElementById('birthdate').value;
+            const birthDate = new Date(birthdate);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+
+            if (monthDifference < 0 || (monthDifference == 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById('age').textContent = `You are ${age} years old.`;
+        }
+    </script>
+</body>
+</html>

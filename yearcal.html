@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Year Calculate</title>
+</head>
+<link rel="stylesheet" href="yearcal.css">
+<body>
+
+ <center>
+    <div class="box">
+        <h3>Magic Age Trick</h3>
+        <p>Enter your age:</p>
+        <input type="number" id="age"/> <br><br>
+        <button onclick="Magic()" id="btn">click</button>
+        <p id="result"></p>
+    </div>
+ </center>
+
+
+    <script>
+        function Magic() {
+            
+            var age = document.getElementById("age").value;
+          
+            var magicNumber = 789 - age + 1235;
+           
+            document.getElementById("result").innerHTML = "Your age is: " + magicNumber;
+        }
+    </script>
+</body>
+</html>
