@@ -1,9 +1,7 @@
 
    body{
-        height: 90vh;
-         background-repeat: no-repeat;
-         background-image: linear-gradient(29deg, hsl(151,59%,76%),hsl(202.429,59%,76%),hsl(253.857,59%,76%),hsl(305.286,59%,76%),hsl(356.714,59%,76%),hsl(48.143,59%,76%),hsl(99.571,59%,76%));
-     }
+       background:black;
+   }
      .box{
             background: transparent;
             border-radius: 13px;
