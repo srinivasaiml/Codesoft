@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+          background:hsl(0, 0%, 100%);
+         left: 50%;
+         right: 50%;
+         transform: translate(30%,50%);
+        }
+       
+        .box{
+            box-shadow: 3px 2px  15px rgb(43, 40, 40),inset -3px -5px 20px rgb(118, 117, 117);  
+            margin: 50px 30px;
+            width: 260px;
+            height: 220px;
+            background-color: #ffffff;
+            border-radius: 70px;
+        }
+        .line{
+            margin-top: 73px;
+            border: 1.3px solid #959494;
+            position: absolute;
+            width: 260px;
+            overflow: hidden;
+            z-index: 9;
+            
+        }
+        .mouth{
+            justify-content: center;
+            align-content: center;
+            position: absolute;
+            width: 150px;
+            height: 20px;
+            background: linear-gradient(180deg, #d6d6d6, #fff);
+            border-radius: 200px;
+            background: #ffffff;
+            box-shadow: inset  1px 1px 10px rgb(128, 127, 127);
+            margin-top: 63px;
+            margin-left: 50px;
+        }
+        .light{
+            height: 8px;
+            width: 8px;
+            background: rgb(56, 199, 56);
+            box-shadow: 1px 1px 10px  rgb(56, 199, 56);
+            border-radius: 50%;
+            position: absolute;
+            margin-left: 125px;
+            margin-top: 110px;
+            animation: bulb 0.4s infinite;
+        }
+        @keyframes bulb{
+            0%{
+              background: white;
+            }
+            100%{
+                background: rgb(19, 231, 139);
+            }
+            
+        }
+        .text{
+            position: absolute;
+            color: rgb(220, 147, 52);
+            font-style: italic;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-top: 150px;
+            margin-left: 85px;
+          
+        }
+       
+    </style>
+    <div class="box">
+        <div class="line"></div>
+        <div class="mouth"></div>
+        <div class="light"></div>
+        <div class="text">Fire Bolt</div>
+    </div>
+    
+</body>
+</html>
