@@ -6,7 +6,7 @@ atm card to click :  https://srinivasaiml.github.io/Codsoft/atmcard.html
 age calculate: https://srinivasaiml.github.io/Codesoft/age.html                                                    
 Date of Birth cal : https://srinivasaiml.github.io/Codesoft/yearcal.html                                          
 Buds :  https://srinivasaiml.github.io/Codesoft/buds.html                                                                                                                
-hospital : https://srinivasaiml.github.io/Codesoft/hospitalpage.html
+hospital : https://srinivasaiml.github.io/Codesoft/hospitalpage.html                                                                                 
 chatboot : https://srinivasaiml.github.io/Codesoft/chatboot.html
                  
 
