@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="appstyle.css">
+<body>
+    <div class="header__form" style="margin: 0px 450px;">
+        <center >
+            <form>
+                <h4>Book Appointment</h4>
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+                <input type="email" placeholder="Email" />
+                <input type="tel" placeholder="Phone No." />
+                <input type="date" placeholder="Date" />
+                <input type="time" placeholder="Time" />
+                <select required>
+                  <option value="Dr. Emily Smith">Dr. Emily Smith (Cardiologist)</option>
+                  <option value="Dr. James Anderson">Dr. James Anderson (Neurosurgeon)</option>
+                  <option value="Dr. Michael Lee">Dr. Michael Lee (Dermatologist)</option>
+                  <option value="Dr. Laura Carter">Dr. Laura Carter (Pediatrician)</option>
+                  <option value="Dr. Robert Green">Dr. Robert Green (Orthopedic Specialist)</option>
+                  <option value="Dr. Sarah James">Dr. Sarah James (General Surgeon)</option>
+                </select>
+                <button class="btn form__btn" onclick="btn()">Book Appointment</button>
+              </form>
+        </center>
+      </div>
+      <script>
+        function btn(){
+            alert("Appointment booked successfully");
+        }
+      </script>
+</body>
+</html>
