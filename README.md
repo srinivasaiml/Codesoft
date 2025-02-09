@@ -1,5 +1,5 @@
 # Codsoft
-portfolio to click the link: https://srinivasaiml.github.io/Codsoft/portfolio.html                         
+portfolio to click the link: https://srinivasaiml.github.io/Codsoft/srinivas.html                         
 calculator to click the link: https://srinivasaiml.github.io/Codsoft/calculator.html                                  
 landingpage to click the link: https://srinivasaiml.github.io/Codsoft/landingpage.html                        
 atm card to click :  https://srinivasaiml.github.io/Codsoft/atmcard.html                                                
