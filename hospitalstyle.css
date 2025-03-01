@@ -325,7 +325,7 @@ header {
           .doctors__card {
               flex-shrink: 0;
               width: 250px;
-              height: 350px;
+              height: 400px;
               background-color: white;
               border-radius: 10px;
               box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -333,17 +333,13 @@ header {
               scroll-snap-align: center;
               transition: transform 0.3s ease;
           }
-  
-          .doctors__card:hover {
-              transform: scale(1.05);
-              overflow:auto;
-          }
+
   
           .doctors__card__image img {
-            padding: 10px;
-              width: 10%;
-              height: 10px;
-              object-fit: fill;
+
+              padding: 10px;
+              height: 80%;
+              object-fit:contain;
           }
   
           .doctors__card h4 {
