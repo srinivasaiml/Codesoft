@@ -1,38 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<link rel="stylesheet" href="appstyle.css">
-<body>
-    <div class="header__form" style="margin: 0px 450px;">
-        <center >
-            <form>
-                <h4>Book Appointment</h4>
-                <input type="text" placeholder="First Name" />
-                <input type="text" placeholder="Last Name" />
-                <input type="email" placeholder="Email" />
-                <input type="tel" placeholder="Phone No." />
-                <input type="date" placeholder="Date" />
-                <input type="time" placeholder="Time" />
-                <select required>
-                  <option value="Dr. Emily Smith">Dr. Emily Smith (Cardiologist)</option>
-                  <option value="Dr. James Anderson">Dr. James Anderson (Neurosurgeon)</option>
-                  <option value="Dr. Michael Lee">Dr. Michael Lee (Dermatologist)</option>
-                  <option value="Dr. Laura Carter">Dr. Laura Carter (Pediatrician)</option>
-                  <option value="Dr. Robert Green">Dr. Robert Green (Orthopedic Specialist)</option>
-                  <option value="Dr. Sarah James">Dr. Sarah James (General Surgeon)</option>
-                </select>
-                <button class="btn form__btn" onclick="btn()">Book Appointment</button>
-              </form>
-        </center>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
+   
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="hospitalstyle.css" />
+    <title>Web Design Mastery | HealthCare</title>
+  </head>
+  <body>
+    <header>
+      <nav class="section__container nav__container">
+        <div class="nav__logo">Hospital <span>Service</span></div>
+        <ul class="nav__links">
+         <li class="link"><a href="#home">Home</a></li>
+          <li class="link"><a href="#about">About Us</a></li>
+          <li class="link"><a href="#service">Services</a></li>
+          <li class="link"><a href="#pages">Pages</a></li>
+          <li class="link"><a href="#blog">Blog</a></li>
+          <li class="link"><a href="#chat">ChatAI</a></li>
+        </ul>
+        <button class="btn">Contact Us</button>
+      </nav>
+      <div class="section__container header__container" id="home">
+        <div class="header__content">
+          <h1>Chat with AI To Booking the Appointment  </h1>
+          <p>
+            Welcome to our AI-powered chat system, where you can easily book an appointment with our team of experts. Simply type in your query or select from our list of available appointment slots, and our AI system will guide you through the booking process.</p>
+
+          <button class="btn"><a href="#chat">ChatAI</a></button>
+        </div>
       </div>
-      <script>
-        function btn(){
-            alert("Appointment booked successfully");
-        }
-      </script>
-</body>
+    </header>
+<!-- services section ------------------------------------------------>
+
+
+    <section class="section__container service__container" id="service">
+      <div class="service__header">
+        <div class="service__header__content">
+          <h2 class="section__header">Our Special service</h2>
+          <p>
+            Beyond simply providing medical care, our commitment lies in
+            delivering unparalleled service tailored to your unique needs.
+          </p>
+        </div>
+        <button class="service__btn">Ask A Service</button>
+      </div>
+
+
+      <div class="service__grid">
+        <div class="service__card">
+          <span><i class="ri-flask-line"></i></span>
+          <h4>Advanced Diagnostics</h4>
+          <p>
+            Cutting-edge testing solutions for accurate and timely diagnosis of your health needs.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+
+
+        <div class="service__card">
+          <span><i class="ri-heart-pulse-line"></i></span>
+          <h4>Wellness Programs</h4>
+          <p>
+            Personalized wellness plans to promote a healthier, happier lifestyle for you and your family.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+
+
+        <div class="service__card">
+          <span><i class="ri-first-aid-kit-line"></i></span>
+          <h4>Emergency Care</h4>
+          <p>
+            Immediate medical attention and support for urgent health situations, available 24/7.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+
+
+        <div class="service__card">
+          <span><i class="ri-stethoscope-line"></i></span>
+          <h4>Specialist Consultations</h4>
+          <p>
+            Access expert medical advice from certified specialists across various disciplines.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+
+
+        <div class="service__card">
+          <span><i class="ri-medicine-bottle-line"></i></span>
+          <h4>Pharmacy Services</h4>
+          <p>
+            Convenient access to essential medications and expert pharmaceutical advice for your needs.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+      
+        <div class="service__card">
+          <span><i class="ri-group-line"></i></span>
+          <h4>Family Health Packages</h4>
+          <p>
+            Comprehensive health plans designed to cater to the well-being of your entire family.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+    
+
+    </section>
+
+    <!-- servie section end --------------------------------------- -->
+<hr>
+
+    <!-- about section ----------------------------------------- -->
+
+    <!--  -->
+
+    <section class="section__container about__container" id="about">
+      <div class="about__content">
+        <h2 class="section__header">About Us</h2> <hr> <br>
+        <p>
+          Welcome to our healthcare platform—your trusted partner in achieving a healthier, happier life. Our mission is to provide accurate, reliable, and easy-to-understand health information tailored to support you every step of the way.
+        </p>
+        <p>
+          Our extensive library of expertly crafted articles, guides, and resources covers a wide range of topics, including managing medical conditions, preventive care, and tips for fostering a balanced lifestyle. Every piece of content is designed to empower you with the knowledge to make informed decisions about your health and well-being.
+        </p>
+        <p>
+          We’re passionate about helping you achieve optimal health through practical advice and actionable insights. From nutrition and fitness tips to mental wellness strategies, our goal is to inspire positive change in your daily routine. Together, let’s transform small, meaningful steps into lasting, impactful results for a brighter, healthier future.
+        </p>
+      </div>
+      <div class="about__image">
+        <img src="assets/abt.jpg" alt="about" />
+      </div>
+    </section>
+    <!--  about  end herr--------------->
+
+    <section class="section__container why__container" id="blog">
+      <div class="why__image">
+      <br><br><br><br><br>  <img src="assets/choose.jpg" alt="why choose us" />
+      </div>
+      <div class="why__content">
+        <h2 class="section__header" style="margin-left: -20em;">Why We’re Different</h2>
+        <p style="margin-left: -40em;">
+          At our healthcare facility, we go beyond the ordinary to provide exceptional care tailored to your unique needs. With a patient-centered approach, cutting-edge technology, and a compassionate team of experts, we strive to deliver not just treatment but a holistic healing experience. Our commitment to innovation and excellence ensures that every step of your journey with us is guided by trust, transparency, and unmatched quality of care. Discover the difference with us—where your health and well-being always come first. 
+        </p>
+        <div class="why__grid">
+          <span><i class="ri-chat-3-line"></i></span>
+          <div>
+            <h4>AI Health Assistant</h4>
+            <p>
+              Use our intelligent Chat AI to get health tips, advice, and answers to your medical questions in real-time.
+            </p>
+          </div> 
+          <span><i class="ri-heart-pulse-line"></i></span>
+          <div>
+            <h4>24/7 Emergency Support</h4>
+            <p>
+              Immediate assistance and round-the-clock emergency care for all critical situations.
+            </p>
+          </div>
+          <span><i class="ri-shield-cross-line"></i></span>
+          <div>
+            <h4>World-Class Facilities</h4>
+            <p>
+              Our state-of-the-art infrastructure is designed to ensure safety, comfort, and excellent care for all patients.
+            </p>
+          </div>
+          <span><i class="ri-nurse-line"></i></span>
+          <div>
+            <h4>Expert Medical Team</h4>
+            <p>
+              Our highly qualified and experienced medical professionals are committed to your health and well-being.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+<!-- end here ------------------------------ -->
+<section class="section__container doctors__container" id="doctors">
+  <div class="doctors__header">
+      <div class="doctors__header__content">
+          <h2 class="section__header">Our Special Doctors</h2>
+          <p>We take pride in our exceptional team of doctors, each a specialist in their respective fields.</p>
+      </div>
+  </div>
+  <div class="doctors__grid">
+  
+      <div class="doctors__card">
+          <div class="doctors__card__image">
+              <img src="assets/doctor1.jpg" alt="doctor">
+          </div>
+          <h4>Dr. James Anderson</h4>
+          <p>Neurosurgeon</p>
+      </div>
+      <div class="doctors__card">
+          <div class="doctors__card__image">
+              <img src="assets\doctor2.jpg" alt="doctor">
+          </div>
+          <h4>Dr. Michael Lee</h4>
+          <p>Dermatologist</p>
+      </div>
+      <div class="doctors__card">
+          <div class="doctors__card__image">
+              <img src="assets/doctor3.jpg" alt="doctor">
+          </div>
+          <h4>Dr. Laura Carter</h4>
+          <p>Pediatrician</p>
+      </div>
+      <div class="doctors__card">
+          <div class="doctors__card__image">
+              <img src="assets/doctor4.jpg" alt="doctor">
+          </div>
+          <h4>Dr. Robert Green</h4>
+          <p>Orthopedic Specialist</p>
+      </div>
+      <div class="doctors__card">
+          <div class="doctors__card__image">
+              <img src="assets/doctor7.jpg" alt="doctor">
+          </div>
+          <h4>Dr. Sarah James</h4>
+          <p>General Surgeon</p>
+      </div>
+  </div>
+  <!-- Arrow buttons for sliding -->
+  <div class="slide__controls">
+      <button class="scroll-left">←</button>
+      <button class="scroll-right">→</button>
+  </div>
+</section>
+
+
+
+   <!-- Chat Section -->
+   <section class="section__container chat__container" id="chat" style="background-color: #f5f7fe;">
+    <div class="chat__header">
+        <div class="chat__header__content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px; color: white;">
+            <h2 class="section__header" style="color: white;">
+                <i class="fas fa-comment-medical" style="margin-right: 10px;"></i>
+                Chat with AI Health Assistant 
+                🤖
+            </h2>
+            <p style="font-size: 1.1rem; color: aqua;">
+                <i class="fas fa-info-circle" style="color: aqua;"></i> Get instant answers to your health-related questions with our AI-powered assistant.
+                <i class="fas fa-stethoscope" style="margin-left: 10px;"></i>
+            </p>
+        </div>
+    </div>
+    <div class="chat__dashboard" style="background-color: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="chat__dashboard__header" style="padding: 1.5rem; border-bottom: 2px solid #f0f2f5;">
+            <h4 style="margin: 0; color: #1abb6e;">
+                
+                🤖 Health Assistant Bot
+                <span style="float: right;">
+                    <i class="fas fa-shield-alt" style="color: #48bb78; margin-right: 10px;"></i>
+                    <i class="fas fa-lock" style="color: #48bb78;"></i>
+                </span>
+            </h4>         
+        </div>
+        <div class="chat__dashboard__content">
+          <div id="chat-messages" class="chat__messages" style="background: linear-gradient(45deg, #f8fafc, #f7f5fb);">
+            <!-- Messages will be displayed here -->
+        </div>
+            <div class="chat__input" style="background-color: #f8fafc; border-top: 2px solid #edf2f7;">
+                <i class="fas fa-user-md" style="color: #667eea;"></i>
+                <input type="text" placeholder="Type your health question..." style="flex: 1; border: 2px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                <button class="chat__send" style="background-color: #667eea; border-radius: 8px; margin: 0 10px; padding: 12px 20px;">
+                    <i class="fas fa-paper-plane" style="color: white;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <h3>Health<span>Care</span></h3>
+          <p>
+            We are honored to be a part of your healthcare journey and committed
+            to delivering compassionate, personalized, and top-notch care every
+            step of the way.
+          </p>
+          <p>
+            Trust us with your health, and let us work together to achieve the
+            best possible outcomes for you and your loved ones.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>About Us</h4>
+          <p>Home</p>
+          <p>About Us</p>
+          <p>Work With Us</p>
+          <p>Our Blog</p>
+          <p>chat with ai</p>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <p>Search Terms</p>
+          <p>Advance Search</p>
+          <p>Privacy Policy</p>
+          <p>Suppliers</p>
+          <p>Our Stores</p>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <p>
+            <i class="ri-map-pin-2-fill"></i>1-30, Rajamundry, India
+          </p>
+          <p><i class="ri-mail-fill"></i> support@care.com</p>
+          <p><i class="ri-phone-fill"></i> (+91) 123 456 7890</p>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <div class="footer__bar__content">
+          <p>Copyright © 2023 Web Design Mastery. All rights reserved.</p>
+          <div class="footer__socials">
+            <span><i class="ri-instagram-line"></i></span>
+            <span><i class="ri-facebook-fill"></i></span>
+            <span><i class="ri-heart-fill"></i></span>
+            <span><i class="ri-twitter-fill"></i></span>
+          </div>
+        </div>
+      </div>
+      <script src="hospitalscript.js"></script>
+    </footer>
+  </body>
 </html>
