@@ -316,6 +316,41 @@
             startBtn.disabled = false;
             stopBtn.disabled = true;
         }
+
+        
     </script>
+    <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Disable certain key shortcuts
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+U
+        if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+            e.preventDefault();
+        }
+
+        // Ctrl+Shift+I (Inspect)
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+            e.preventDefault();
+        }
+
+        // Ctrl+Shift+C (Element picker)
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+            e.preventDefault();
+        }
+
+        // Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+            e.preventDefault();
+        }
+
+        // F12 (Developer Tools)
+        if (e.key === 'F12') {
+            e.preventDefault();
+        }
+    });
+</script>
+
 </body>
 </html>
