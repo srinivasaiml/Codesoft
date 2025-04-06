@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transport Speed Tracker</title>
+    <title>Real-Time Speed Tracker</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,18 +40,9 @@
             transition: all 0.3s;
         }
         
-        .transport-option:hover {
-            background-color: #eaeaea;
-        }
-        
         .transport-option.selected {
             background-color: #3498db;
             color: white;
-        }
-        
-        .transport-option img {
-            width: 60px;
-            height: 60px;
         }
         
         .speed-display {
@@ -96,17 +87,9 @@
             color: white;
         }
         
-        #startBtn:hover {
-            background-color: #27ae60;
-        }
-        
         #stopBtn {
             background-color: #e74c3c;
             color: white;
-        }
-        
-        #stopBtn:hover {
-            background-color: #c0392b;
         }
         
         .status {
@@ -123,11 +106,6 @@
             border-radius: 8px;
         }
         
-        .details h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        
         .hidden {
             display: none;
         }
@@ -135,7 +113,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Transport Speed Tracker</h1>
+        <h1>Real-Time Speed Tracker</h1>
         
         <div class="transport-selector">
             <div class="transport-option" data-type="train">
@@ -175,7 +153,6 @@
     </div>
 
     <script>
-        // DOM elements
         const transportOptions = document.querySelectorAll('.transport-option');
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
@@ -190,15 +167,14 @@
         const detailDistance = document.getElementById('detailDistance');
         const detailDuration = document.getElementById('detailDuration');
         
-        // Variables
         let selectedTransport = null;
         let watchId = null;
         let tripStartTime = null;
         let lastPosition = null;
-        let totalDistance = 0; // in meters
+        let totalDistance = 0;
         let speedReadings = [];
         let maxSpeed = 0;
-        
+
         // Transport selection
         transportOptions.forEach(option => {
             option.addEventListener('click', () => {
@@ -208,7 +184,7 @@
                 statusMessage.textContent = `Ready to track ${selectedTransport} speed`;
             });
         });
-        
+
         // Start tracking
         startBtn.addEventListener('click', () => {
             if (!selectedTransport) {
@@ -225,14 +201,17 @@
                 speedReadings = [];
                 maxSpeed = 0;
                 tripDetails.classList.add('hidden');
-                
-                // Start watching position
+
                 watchId = navigator.geolocation.watchPosition(
-                    updateSpeed,
+                    position => {
+                        const speed = position.coords.speed;
+                        updateDisplay(speed);
+                        updateTripData(position);
+                    },
                     handleError,
-                    { 
+                    {
                         enableHighAccuracy: true,
-                        maximumAge: 3000,
+                        maximumAge: 2000,
                         timeout: 5000
                     }
                 );
@@ -240,7 +219,7 @@
                 statusMessage.textContent = 'Geolocation is not supported by your browser';
             }
         });
-        
+
         // Stop tracking
         stopBtn.addEventListener('click', () => {
             if (watchId) {
@@ -250,78 +229,83 @@
                 statusMessage.textContent = `Tracking stopped for ${selectedTransport}`;
                 startBtn.disabled = false;
                 stopBtn.disabled = true;
-                
-                // Calculate and display trip details
                 showTripDetails();
             }
         });
-        
-        // Update speed based on position
-        function updateSpeed(position) {
+
+        function updateDisplay(speed) {
+            const kmhSpeed = speed !== null ? (speed * 3.6) : 0;
+            speedValue.textContent = kmhSpeed.toFixed(2);
+            
+            if (kmhSpeed > maxSpeed) {
+                maxSpeed = kmhSpeed;
+            }
+            speedReadings.push(kmhSpeed);
+        }
+
+        function updateTripData(position) {
             if (lastPosition) {
-                // Calculate distance between positions (in meters)
                 const distance = calculateDistance(
                     lastPosition.coords.latitude,
                     lastPosition.coords.longitude,
                     position.coords.latitude,
                     position.coords.longitude
                 );
-                
                 totalDistance += distance;
-                
-                // Calculate time difference in hours
-                const timeDiff = (position.timestamp - lastPosition.timestamp) / 1000 / 3600;
-                
-                if (timeDiff > 0) {
-                    // Calculate speed in km/h
-                    const speed = distance / 1000 / timeDiff;
-                    
-                    // Update display
-                    speedValue.textContent = speed.toFixed(2);
-                    
-                    // Track speed readings
-                    speedReadings.push(speed);
-                    
-                    // Update max speed
-                    if (speed > maxSpeed) {
-                        maxSpeed = speed;
-                    }
-                }
             }
             lastPosition = position;
         }
-        
-        // Calculate distance between two coordinates (Haversine formula)
+
         function calculateDistance(lat1, lon1, lat2, lon2) {
             const R = 6371e3; // Earth radius in meters
             const φ1 = lat1 * Math.PI/180;
             const φ2 = lat2 * Math.PI/180;
             const Δφ = (lat2-lat1) * Math.PI/180;
             const Δλ = (lon2-lon1) * Math.PI/180;
-            
+
             const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
                       Math.cos(φ1) * Math.cos(φ2) *
                       Math.sin(Δλ/2) * Math.sin(Δλ/2);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            
+
             return R * c;
         }
-        
-        // Handle geolocation errors
+
+        function showTripDetails() {
+            const endTime = new Date();
+            const duration = (endTime - tripStartTime) / 1000;
+            const hours = Math.floor(duration / 3600);
+            const minutes = Math.floor((duration % 3600) / 60);
+            const seconds = Math.floor(duration % 60);
+            const formattedDuration = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            const avgSpeed = speedReadings.length > 0 
+                ? speedReadings.reduce((a, b) => a + b, 0) / speedReadings.length
+                : 0;
+
+            detailTransport.textContent = selectedTransport;
+            detailMaxSpeed.textContent = maxSpeed.toFixed(2);
+            detailAvgSpeed.textContent = avgSpeed.toFixed(2);
+            detailDistance.textContent = (totalDistance / 1000).toFixed(2);
+            detailDuration.textContent = formattedDuration;
+            tripDetails.classList.remove('hidden');
+        }
+
         function handleError(error) {
             let message = '';
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    message = "User denied the request for Geolocation.";
+                    message = "Location access denied. Please enable permissions";
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    message = "Location information is unavailable.";
+                    message = "Location information unavailable";
                     break;
                 case error.TIMEOUT:
-                    message = "The request to get user location timed out.";
+                    message = "Location request timed out";
                     break;
                 case error.UNKNOWN_ERROR:
-                    message = "An unknown error occurred.";
+                    message = "Unknown error occurred";
                     break;
             }
             statusMessage.textContent = message;
@@ -331,34 +315,6 @@
             }
             startBtn.disabled = false;
             stopBtn.disabled = true;
-        }
-        
-        // Show trip details after tracking stops
-        function showTripDetails() {
-            const endTime = new Date();
-            const duration = (endTime - tripStartTime) / 1000; // in seconds
-            
-            // Format duration as HH:MM:SS
-            const hours = Math.floor(duration / 3600);
-            const minutes = Math.floor((duration % 3600) / 60);
-            const seconds = Math.floor(duration % 60);
-            const formattedDuration = 
-                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Calculate average speed
-            const avgSpeed = speedReadings.length > 0 
-                ? speedReadings.reduce((a, b) => a + b, 0) / speedReadings.length
-                : 0;
-            
-            // Update details
-            detailTransport.textContent = selectedTransport;
-            detailMaxSpeed.textContent = maxSpeed.toFixed(2);
-            detailAvgSpeed.textContent = avgSpeed.toFixed(2);
-            detailDistance.textContent = (totalDistance / 1000).toFixed(2);
-            detailDuration.textContent = formattedDuration;
-            
-            // Show details
-            tripDetails.classList.remove('hidden');
         }
     </script>
 </body>
