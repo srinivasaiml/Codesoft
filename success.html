@@ -1,96 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Waving Hand Emoji Animation</title>
-  <style>
-    body{
-      background: #090c0a;
-    }
-
-   
-    /*=============*/
-    .card {
-  border-radius:20% ;
-  margin-top: 10%;
-  position: absolute;
-  width:200px;
-  height: 200px;
-  transition: all 0.2s;
-  position: relative;
-  cursor: pointer;
-}
-
-.card-inner {
-  width: inherit;
-  height: inherit;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 10px white;
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-}
-
-.card:hover {
-  transform: scale(1.04) rotate(1deg);
-}
-
-.circle {
-  width: 100px;
-  height: 100px;
-  background: repeating-linear-gradient(48deg, #3023ae 0%, #ff0099 100%);
-  border-radius: 35% 30% 75% 30% / 49% 30% 70% 51%;
-  position: absolute;
-  animation: move-up6 2s ease-in infinite alternate-reverse;
-}
-
-.circle:nth-child(1) {
-  top: -25px;
-  left: -25px;
-}
-
-.circle:nth-child(2) {
-  bottom: -25px;
-  right: -25px;
-  animation-name: move-down1;
-}
-
-@keyframes move-up6 {
-  to {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes move-down1 {
-  to {
-    transform: translateY(10px);
-  }
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Speed Tracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .transport-selector {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .transport-option {
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .transport-option:hover {
+            background-color: #eaeaea;
+        }
+        
+        .transport-option.selected {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .transport-option img {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .speed-display {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .speed-value {
+            font-size: 72px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .unit {
+            font-size: 24px;
+            color: #7f8c8d;
+        }
+        
+        .transport-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #startBtn {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        #startBtn:hover {
+            background-color: #27ae60;
+        }
+        
+        #stopBtn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        #stopBtn:hover {
+            background-color: #c0392b;
+        }
+        
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        
+        .details {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .details h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
- 
-  <center>
-  <div class="card">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="card-inner">
-        <br>
-        <h1 style="color: white;">Successfully<br> completed</h1>
+    <div class="container">
+        <h1>Transport Speed Tracker</h1>
+        
+        <div class="transport-selector">
+            <div class="transport-option" data-type="train">
+                <div class="transport-icon">🚆</div>
+                <div>Train</div>
+            </div>
+            <div class="transport-option" data-type="bus">
+                <div class="transport-icon">🚌</div>
+                <div>Bus</div>
+            </div>
+            <div class="transport-option" data-type="bike">
+                <div class="transport-icon">🚲</div>
+                <div>Bike</div>
+            </div>
+        </div>
+        
+        <div class="speed-display">
+            <div class="speed-value">0.00</div>
+            <div class="unit">km/h</div>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn">Start Tracking</button>
+            <button id="stopBtn" disabled>Stop Tracking</button>
+        </div>
+        
+        <div class="status" id="statusMessage">Select your transport and click Start</div>
+        
+        <div class="details hidden" id="tripDetails">
+            <h3>Trip Details</h3>
+            <p>Transport: <span id="detailTransport">-</span></p>
+            <p>Max Speed: <span id="detailMaxSpeed">0.00</span> km/h</p>
+            <p>Average Speed: <span id="detailAvgSpeed">0.00</span> km/h</p>
+            <p>Distance: <span id="detailDistance">0.00</span> km</p>
+            <p>Duration: <span id="detailDuration">00:00:00</span></p>
+        </div>
     </div>
-  </div>
-</center>
 
-<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
-
-<script>
-  new Snowflakes();
-</script>
-<script>
-  new Snowflakes();
-</script>
-<script>
-  new Snowflakes();
-</script>
+    <script>
+        // DOM elements
+        const transportOptions = document.querySelectorAll('.transport-option');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const speedValue = document.querySelector('.speed-value');
+        const statusMessage = document.getElementById('statusMessage');
+        const tripDetails = document.getElementById('tripDetails');
+        
+        // Trip details elements
+        const detailTransport = document.getElementById('detailTransport');
+        const detailMaxSpeed = document.getElementById('detailMaxSpeed');
+        const detailAvgSpeed = document.getElementById('detailAvgSpeed');
+        const detailDistance = document.getElementById('detailDistance');
+        const detailDuration = document.getElementById('detailDuration');
+        
+        // Variables
+        let selectedTransport = null;
+        let watchId = null;
+        let tripStartTime = null;
+        let lastPosition = null;
+        let totalDistance = 0; // in meters
+        let speedReadings = [];
+        let maxSpeed = 0;
+        
+        // Transport selection
+        transportOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                transportOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedTransport = option.dataset.type;
+                statusMessage.textContent = `Ready to track ${selectedTransport} speed`;
+            });
+        });
+        
+        // Start tracking
+        startBtn.addEventListener('click', () => {
+            if (!selectedTransport) {
+                statusMessage.textContent = 'Please select a transport first';
+                return;
+            }
+            
+            if (navigator.geolocation) {
+                statusMessage.textContent = `Tracking ${selectedTransport} speed...`;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                tripStartTime = new Date();
+                totalDistance = 0;
+                speedReadings = [];
+                maxSpeed = 0;
+                tripDetails.classList.add('hidden');
+                
+                // Start watching position
+                watchId = navigator.geolocation.watchPosition(
+                    updateSpeed,
+                    handleError,
+                    { 
+                        enableHighAccuracy: true,
+                        maximumAge: 3000,
+                        timeout: 5000
+                    }
+                );
+            } else {
+                statusMessage.textContent = 'Geolocation is not supported by your browser';
+            }
+        });
+        
+        // Stop tracking
+        stopBtn.addEventListener('click', () => {
+            if (watchId) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+                speedValue.textContent = '0.00';
+                statusMessage.textContent = `Tracking stopped for ${selectedTransport}`;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                
+                // Calculate and display trip details
+                showTripDetails();
+            }
+        });
+        
+        // Update speed based on position
+        function updateSpeed(position) {
+            if (lastPosition) {
+                // Calculate distance between positions (in meters)
+                const distance = calculateDistance(
+                    lastPosition.coords.latitude,
+                    lastPosition.coords.longitude,
+                    position.coords.latitude,
+                    position.coords.longitude
+                );
+                
+                totalDistance += distance;
+                
+                // Calculate time difference in hours
+                const timeDiff = (position.timestamp - lastPosition.timestamp) / 1000 / 3600;
+                
+                if (timeDiff > 0) {
+                    // Calculate speed in km/h
+                    const speed = distance / 1000 / timeDiff;
+                    
+                    // Update display
+                    speedValue.textContent = speed.toFixed(2);
+                    
+                    // Track speed readings
+                    speedReadings.push(speed);
+                    
+                    // Update max speed
+                    if (speed > maxSpeed) {
+                        maxSpeed = speed;
+                    }
+                }
+            }
+            lastPosition = position;
+        }
+        
+        // Calculate distance between two coordinates (Haversine formula)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371e3; // Earth radius in meters
+            const φ1 = lat1 * Math.PI/180;
+            const φ2 = lat2 * Math.PI/180;
+            const Δφ = (lat2-lat1) * Math.PI/180;
+            const Δλ = (lon2-lon1) * Math.PI/180;
+            
+            const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ/2) * Math.sin(Δλ/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            
+            return R * c;
+        }
+        
+        // Handle geolocation errors
+        function handleError(error) {
+            let message = '';
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    message = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    message = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    message = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    message = "An unknown error occurred.";
+                    break;
+            }
+            statusMessage.textContent = message;
+            if (watchId) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+            }
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        }
+        
+        // Show trip details after tracking stops
+        function showTripDetails() {
+            const endTime = new Date();
+            const duration = (endTime - tripStartTime) / 1000; // in seconds
+            
+            // Format duration as HH:MM:SS
+            const hours = Math.floor(duration / 3600);
+            const minutes = Math.floor((duration % 3600) / 60);
+            const seconds = Math.floor(duration % 60);
+            const formattedDuration = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Calculate average speed
+            const avgSpeed = speedReadings.length > 0 
+                ? speedReadings.reduce((a, b) => a + b, 0) / speedReadings.length
+                : 0;
+            
+            // Update details
+            detailTransport.textContent = selectedTransport;
+            detailMaxSpeed.textContent = maxSpeed.toFixed(2);
+            detailAvgSpeed.textContent = avgSpeed.toFixed(2);
+            detailDistance.textContent = (totalDistance / 1000).toFixed(2);
+            detailDuration.textContent = formattedDuration;
+            
+            // Show details
+            tripDetails.classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
